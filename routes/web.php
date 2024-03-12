@@ -69,4 +69,6 @@ Route::group(['middleware' => 'auth'], function ()
         //cette route permet de deconnecter un utilisateurs(admin ou pas admin)
     Route::get('logout-user', [ProfileController::class, 'Logout'])
             ->name('logoutUser');
+    Route::get('fiche_renseigement', [ProfileController::class, 'fiche_renseigement'])
+            ->name('fiche_renseigement');
 });

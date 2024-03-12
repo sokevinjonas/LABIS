@@ -90,4 +90,8 @@ class ProfileController extends Controller
     
         return redirect()->route('sign');
     }
+
+    public function fiche_renseigement(){
+        return view('users.fiche_renseignements');
+    }
 }

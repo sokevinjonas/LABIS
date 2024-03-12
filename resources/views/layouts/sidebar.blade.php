@@ -94,6 +94,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('fiche_renseigement') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Fiche Enregistrements
+                        </p>
+                    </a>
+                </li>
             @endif
         </ul>
     </nav>
