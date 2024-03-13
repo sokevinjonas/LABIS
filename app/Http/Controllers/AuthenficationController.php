@@ -53,11 +53,11 @@ class AuthenficationController extends Controller
     public function PostSign(PostSignRequest $request)
     {
         $validate = $request->validated();
-        if(Auth::attempt($validate))
+        if(Auth::attempt($validate, $request->has('remember')))
         {
             $request->session()->regenerate();
-            notyf()->ripple(true)->addSuccess('Successfully');
-            return redirect()->intended(route('dashboard'));
+            notyf()->ripple(true)->addSuccess('Connexion reussie');
+            return redirect()->intended(route('myProfile'));
         } else {
             notyf()->ripple(true)->addError('Le numero de telephone ou le mot de passe sont incorrectent.');
             return redirect()->back();

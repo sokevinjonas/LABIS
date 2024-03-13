@@ -94,7 +94,7 @@
         </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="{{ route('myProfile') }}" role="button">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user fa-2x text-primary"></i>
             </a>
         </li>
     </ul>

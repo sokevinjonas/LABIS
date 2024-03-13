@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UdapteUserRequest;
 use App\Http\Requests\PhotoUpdateRequest;
+use App\Utils\ProfileCompletenessChecker;
 
 class ProfileController extends Controller
 {   
@@ -17,10 +18,13 @@ class ProfileController extends Controller
     {   
         $user = Auth::user();
         $Countpresence = Presence::where('user_id', $user->id)->count();
+        $notComplet = ProfileCompletenessChecker::isProfileComplete($user);
+        // dd($notComplet);
         // dd($Countpresence);
         return view('users.my_profile', [
             'user' => $user,
-            'Countpresence' => $Countpresence
+            'Countpresence' => $Countpresence,
+            'notComplet' => $notComplet
         ]);
     }
     //Nb: cette fonction permet de mettre a jour les infos du profile
@@ -41,6 +45,10 @@ class ProfileController extends Controller
         $user->bio  = $validate['bio'];
 
         $user->save();
+        // Vérifiez si le profil est complet après la mise à jour
+        if (!ProfileCompletenessChecker::isProfileComplete($user)) {
+            return redirect()->back();
+        }
         notyf()->ripple(true)->addSuccess('Votre profile a été mise à jour avec succès.');
             return redirect()->back();
             
@@ -72,8 +80,12 @@ class ProfileController extends Controller
                 // Enregistrez le nom du fichier dans la base de données
                 $user->photo = $imageName;
                 $user->save(); 
+                // Vérifiez si le profil est complet après la mise à jour
+                if (!ProfileCompletenessChecker::isProfileComplete($user)) {
+                    return redirect()->back();
+                }
+                notyf()->ripple(true)->addSuccess('Photo mise à jour avec succès.');
             }
-            notyf()->ripple(true)->addSuccess('Photo mise à jour avec succès.');
 
             return redirect()->back();
         } catch (Exception $th) {

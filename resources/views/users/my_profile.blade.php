@@ -1,5 +1,21 @@
 @extends('layouts.app')
+@section('CustomCSS')
+    <style>
+        .btn-custom {
+            background-color: #84ff00;
+            color: #000000;
+        }
+    </style>
+@endsection
 @section('content')
+    {{-- @if (!$user->VerifierSiProfileEstComplet()) --}}
+    {{-- <p class="alert alert-danger">Alert Profile imcomplet</p> --}}
+    {{-- @endif --}}
+    @if (!$notComplet)
+        <p class="alert alert-warning">Votre profil est incomplet. Veuillez le compléter en remplissant tous les champs
+            vides.</p>
+    @endif
+
     <div class="row">
         <div class="col-md-3">
 
@@ -14,8 +30,9 @@
 
                     <h3 class="profile-username text-center">{{ $user->nom }}</h3>
 
-                    <button class="btn btn-light" data-toggle="modal" data-target="#ChangeUserProfile">Ajouter une
-                        photo</button>
+                    <button class="submit btn btn-custom btn-block" data-toggle="modal" data-target="#ChangeUserProfile">
+                        {{ $user->photo ? 'Modifier la photo' : 'Ajouter une photo' }}
+                    </button>
 
                     @if (Auth::user()->isUser())
                         <ul class="list-group list-group-unbordered mb-3">
@@ -48,7 +65,8 @@
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Mes Infos</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Changer mot de passe</a>
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Changer mot de
+                                passe</a>
                         </li>
                     </ul>
                 </div><!-- /.card-header -->
@@ -107,9 +125,11 @@
                                     <div class="col-sm-10">
                                         <select name="sexe" id="sexe" class="form-control">
                                             <option value="">-----</option>
-                                            <option value="M" @if (old('sexe', $user->sexe) == 'M') selected @endif>Homme
+                                            <option value="M" @if (old('sexe', $user->sexe) == 'M') selected @endif>
+                                                Homme
                                             </option>
-                                            <option value="F" @if (old('sexe', $user->sexe) == 'F') selected @endif>Femme
+                                            <option value="F" @if (old('sexe', $user->sexe) == 'F') selected @endif>
+                                                Femme
                                             </option>
                                         </select>
                                         @error('sexe')
@@ -129,10 +149,10 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="bio" class="col-sm-2 col-form-label">Bio</label>
+                                    <label for="bio" class="col-sm-2 col-form-label">Decrivez-vous? (pas
+                                        obligatoire)</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="bio" id="bio" placeholder="Une description de vous">{{ $user->bio }}
-                                        </textarea>
+                                        <textarea class="form-control" name="bio" id="bio" placeholder="Une description de vous">{{ $user->bio }}</textarea>
                                         @error('bio')
                                             <span class="text text-danger">{{ $message }}</span>
                                         @enderror
@@ -157,7 +177,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="new_password" class="col-sm-2 col-form-label">Nouveau mot de passe</label>
+                                    <label for="new_password" class="col-sm-2 col-form-label">Nouveau mot de
+                                        passe</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="new_password"
                                             placeholder="Email">

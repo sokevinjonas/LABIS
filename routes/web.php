@@ -37,7 +37,7 @@ Route::group(['middleware' => 'guest'], function ()
 });
 
 //lorsque je suis connecter 
-Route::group(['middleware' => 'auth'], function () 
+Route::group(['middleware' => 'auth' ], function ()  
 {       
         //cette routes retourne la vue du la page acceuil dashboard
     Route::get('/', [AdminController::class, 'dashboard'])
@@ -70,5 +70,5 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('logout-user', [ProfileController::class, 'Logout'])
             ->name('logoutUser');
     Route::get('fiche_renseigement', [ProfileController::class, 'fiche_renseigement'])
-            ->name('fiche_renseigement');
+            ->name('fiche_renseigement')->middleware('completeProfile');
 });

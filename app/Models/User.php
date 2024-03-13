@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Role;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -61,4 +62,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(Presence::class);
     }
+
+    public function VerifierSiProfileEstComplet(): bool
+    {
+        $user= Auth::user();
+        $fields = $user->getAttributes(); 
+        // dd($fields);// Récupère tous les attributs du modèle
+        foreach ($fields as $field) {
+            // Vérifiez si le champ est null, vide ou une chaîne vide
+            if ($field === 'bio' || $field === '' || (is_string($field) && trim($field) === '')) {
+                return false;
+            }
+        }
+    
+        return true;
+    }
+    
 }
