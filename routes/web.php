@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\Infos\InfoController;
 use App\Http\Controllers\AuthenficationController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\LogoutUserController;
@@ -71,4 +72,5 @@ Route::group(['middleware' => 'auth' ], function ()
             ->name('logoutUser');
     Route::get('fiche_renseigement', [ProfileController::class, 'fiche_renseigement'])
             ->name('fiche_renseigement')->middleware('completeProfile');
+    Route::get('infos-formations', [InfoController::class, 'index'])->name('infos.index');
 });
