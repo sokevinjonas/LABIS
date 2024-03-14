@@ -16,9 +16,8 @@
         <li class="nav-item mt-2 pb-3">
             <a class="nav-link" href="{{ route('myProfile') }}">
                 <span style="margin-right: 5px; color: #ff0000;">Mon Profile</span>
-                <img src="https://ui-avatars.com/api/?color=ff0000{{ Auth::user()->nom }}"
-                    class="img-circle elevation-2" style="width: 40px; height: 40px; border-radius: 50%;"
-                    alt="profile utilisateur">
+                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->nom }}" class="img-circle elevation-2"
+                    style="width: 40px; height: 40px; border-radius: 50%;" alt="profile utilisateur">
             </a>
         </li>
     </ul>

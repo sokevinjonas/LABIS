@@ -35,6 +35,8 @@ Route::group(['middleware' => 'guest'], function ()
         //cette routes traite la vue du formulaire de connexion
     Route::post('post-form-sign', [AuthenficationController::class, 'PostSign'])
             ->name('Postsign');
+    Route::get('nos-termes-et-conditions', [ProfileController::class, 'termes'])->name('termes');
+    
 });
 
 //lorsque je suis connecter 
@@ -73,4 +75,5 @@ Route::group(['middleware' => 'auth' ], function ()
     Route::get('fiche_renseigement', [ProfileController::class, 'fiche_renseigement'])
             ->name('fiche_renseigement')->middleware('completeProfile');
     Route::get('infos-formations', [InfoController::class, 'index'])->name('infos.index');
+    
 });

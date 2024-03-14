@@ -106,4 +106,8 @@ class ProfileController extends Controller
     public function fiche_renseigement(){
         return view('users.fiche_renseignements');
     }
+
+    public function termes(){
+        return view('auth.termes_et_conditions');
+    }
 }
