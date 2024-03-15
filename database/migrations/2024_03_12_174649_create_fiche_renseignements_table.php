@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('residence_type')->nullable();;
             $table->string('autre_residence_type')->nullable();
             $table->string('niveau_etude');
-            $table->text('diplomes');
+            $table->text('diplome');
             $table->text('experience_professionnelle');
             $table->text('engagement_associatif');
             $table->text('connaissance_informatique');

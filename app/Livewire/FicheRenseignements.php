@@ -83,6 +83,8 @@ class FicheRenseignements extends Component
             'pays_residence.required' => 'Le champ pays de résidence est obligatoire.',
             'ville_residence.required' => 'Le champ ville de résidence est obligatoire.',
             'adresse_residence.required' => 'Le champ secteur/quartier de résidence est obligatoire.',
+            'residence_type.required_without' => "Veuillez selectionnez une option",
+            'autre_residence_type.required_without' => " ou veuillez donner une precision de ou vous residez",
 
             // ------------Etape 3------------------
             'financierement.required' => 'Le champ Financement est obligatoire.',
@@ -92,8 +94,8 @@ class FicheRenseignements extends Component
             'experience_professionnelle.required' => 'Le champ Experience professionnelle est obligatoire.',
             'engagement_associatif.required' => 'Le champ Engagement est obligatoire.',
             // -------------Etape 5--------------- 
-            'connaissance_linguistique.required' => 'Le champ Connaissance linguistique est obligatoire.',
             'connaissance_informatique.required' => 'Le champ Connaissance informatique est obligatoire.',
+            'connaissance_linguistique.required' => 'Le champ Connaissance linguistique est obligatoire.',
             // -------------Etape 6 --------------- 
 
 
@@ -133,8 +135,8 @@ class FicheRenseignements extends Component
         );
         } elseif ($this->startEtap == 5) {
             $this->validate([
-                'experience_professionnelle' => 'required',
-                'engagement_associatif' => 'required',
+                'connaissance_informatique' => 'required',
+                'connaissance_linguistique' => 'required',
             ],
             $customMessages
         );
@@ -162,7 +164,7 @@ class FicheRenseignements extends Component
             'ville_residence' => $this->ville_residence,
             'adresse_residence' => $this->adresse_residence,
             'niveau_etude' => $this->niveau_etude,
-            'diplomes' => $this->diplome,
+            'diplome' => $this->diplome,
             'experience_professionnelle' => $this->experience_professionnelle,
             'engagement_associatif' => $this->engagement_associatif,
             'connaissance_informatique' => $this->connaissance_informatique,
@@ -195,7 +197,7 @@ class FicheRenseignements extends Component
             'residence_type', 
             'autre_residence_type',
             'niveau_etude',
-            'diplomes',
+            'diplome',
             'experience_professionnelle',
             'engagement_associatif',
             'connaissance_linguistique',

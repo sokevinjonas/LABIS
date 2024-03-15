@@ -315,7 +315,9 @@
                     @endif
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dart" wire:click="decrement">Retour</button>
+                    @if ($startEtap == 2 || $startEtap == 3 || $startEtap == 4 || $startEtap == 5)
+                        <button type="button" class="btn btn-dart" wire:click="decrement">Retour</button>
+                    @endif
                     @if ($startEtap == 1 || $startEtap == 2 || $startEtap == 3 || $startEtap == 4 || $startEtap == 5)
                         <button type="button" class="btn btn-primary" wire:click="increment">Suivant</button>
                     @endif

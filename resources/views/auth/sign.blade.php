@@ -66,7 +66,7 @@
                     </div>
                 </form>
             </div>
-            <a href="{{ route('register') }}" class="text-center text-danger mb-2">Je ne suis pas membre</a>
+            <a href="{{ route('register') }}" class="text-center text-danger mb-2">JE NE SUIS PAS MEMBRE DU LABIS</a>
             <!-- /.form-box -->
         </div><!-- /.card -->
     </div>

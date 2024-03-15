@@ -23,7 +23,9 @@
         @else
             <div class="presence">
                 <button type="button" disabled class="btn btn-primary">Vous avez deja marquez votre
-                    presence</button>
+                    presence du jour</button>
+                <a href="{{ route('infos.index') }}" class="btn btn-danger" target="_blank"
+                    rel="noopener noreferrer">Activité / Formations</a>
             </div>
         @endif
     </div>
