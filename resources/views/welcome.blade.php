@@ -17,16 +17,22 @@
     </script>
     <style>
         .presence {
-            text-align: center;
-            width: 100%;
-            justify-content: center;
-            align-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            /* Marge supérieure pour espacement du haut */
+            margin-bottom: 20px;
+            /* Marge inférieure pour espacement du bas */
         }
 
-        button {
-            margin-top: 5%;
-            justify-content: center;
-            align-content: center;
+        button,
+        a {
+            width: 100%;
+            /* Occupera toute la largeur du conteneur */
+            margin-bottom: 10px;
+            /* Espacement entre les boutons */
         }
     </style>
 @endsection

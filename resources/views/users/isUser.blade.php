@@ -15,9 +15,10 @@
         </div>
         @if ($presenceExistante)
             <div class="presence">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Marquez
-                    sa
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Marquez sa
                     presence</button>
+                <a href="{{ route('infos.index') }}" class="btn btn-danger" target="_blank"
+                    rel="noopener noreferrer">Activité / Formations</a>
             </div>
         @else
             <div class="presence">
@@ -25,16 +26,6 @@
                     presence</button>
             </div>
         @endif
-        <div class="row mt-5">
-            <div class="col">
-                <div class="callout callout-danger">
-                    <h5><i class="fas fa-info"></i> Quel est l'objectif du LABIS:</h5>
-                    Son objectif porte sur l’autonomisation des jeunes en répondant aux questions d’employabilité et
-                    celles d’un engagement citoyen responsable permettant d’accroître le nombre des jeunes conscients et
-                    aptes à répondre aux enjeux de leur territoire.
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Modal -->
@@ -43,7 +34,7 @@
         <div class="modal-dialog">
             <div class="modal-content bg-light">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Marquez votre Presence du jour</h5>
+                    <h5 class="modal-title text-center" id="staticBackdropLabel">Marquez votre présence du jour</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -54,7 +45,7 @@
                         @method('POST')
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Heure de Pointe:</label>
+                                <label>Je suis arrivé à:</label>
                                 <div class="input-group date">
                                     <input type="time" name="heure_arriver"
                                         class="form-control datetimepicker-input" />
@@ -65,10 +56,15 @@
                                 <input type="text" name="motif" class="form-control" />
                             </div>
                         </div>
+                        <div class="row justify-content-center align-items-center">
+                            <i class="fa fa-exclamation-triangle text-warning"></i>
+                            <p class="ml-2 mb-0">NB: Lorsque vous faites l'enregistrement, l'heure actuelle est
+                                considérée comme votre heure de départ.</p>
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary">Soummettre</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Quitter</button>
+                    <button type="submit" class="btn btn-success">Enregistré</button>
                 </div>
                 </form>
             </div>

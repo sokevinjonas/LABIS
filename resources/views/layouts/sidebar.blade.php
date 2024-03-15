@@ -5,18 +5,18 @@
             <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ route('infos.index') }}" class="nav-link ">
-                    <i class="nav-icon fas fa-info"></i>
+                <a href="{{ route('dashboard') }}" class="nav-link ">
+                    <i class="nav-icon fas fa-home"></i>
                     <p>
-                        Infos Labis
+                        Accueil
                     </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link ">
-                    <i class="nav-icon fas fa-home"></i>
+                <a href="{{ route('infos.index') }}" class="nav-link ">
+                    <i class="nav-icon fas fa-running"></i>
                     <p>
-                        Marquer ma presence
+                        Activités et Infos
                     </p>
                 </a>
             </li>
@@ -84,7 +84,7 @@
             @elseif (Auth::user()->isUser())
                 <li class="nav-item">
                     <a href="{{ route('mespresences') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clock"></i>
+                        <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Mes Presences
                         </p>
@@ -92,9 +92,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('fiche_renseigement') }}" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
+                        <i class="nav-icon fas fa-folder"></i>
                         <p>
-                            Fiche Enregistrements
+                            Fiche de Renseigement
                         </p>
                     </a>
                 </li>

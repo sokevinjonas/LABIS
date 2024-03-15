@@ -29,7 +29,7 @@
                 <form action="{{ route('Postregister') }}" method="post">
                     @csrf
                     @method('POST')
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control"
                             placeholder="Nom et Prénom">
                         <div class="input-group-append">
@@ -41,7 +41,7 @@
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="email" name="email" value="{{ old('email') }}" class="form-control"
                             placeholder="Votre email">
                         <div class="input-group-append">
@@ -53,7 +53,7 @@
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="number" name="telephone" value="{{ old('telephone') }}" class="form-control"
                             placeholder="Numéro de téléphone">
                         <div class="input-group-append">
@@ -65,7 +65,7 @@
                     @error('telephone')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="password" name="password" class="form-control" placeholder="Mot de passe">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -76,7 +76,7 @@
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="password" name="confirm_password" class="form-control"
                             placeholder="Répéter le mot de passe">
                         <div class="input-group-append">
