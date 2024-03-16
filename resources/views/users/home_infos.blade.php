@@ -22,7 +22,7 @@
         .card-body {
             margin-top: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             flex-direction: column;
             text-align: start;
@@ -67,5 +67,5 @@
     </style>
 @endsection
 @section('content')
-    @livewire('activite_infos')
+    @livewire('activite-infos')
 @endsection

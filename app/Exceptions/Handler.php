@@ -27,22 +27,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-    /**
-     * Render the exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Throwable $exception)
-    {
-        // Vérifie si l'exception est une erreur 404 (non trouvée)
-        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-            // Affiche la vue personnalisée pour l'erreur 404
-            return response()->view('errors.404');
-        }
-
-        // Si ce n'est pas une erreur 404, renvoie la réponse appropriée pour l'exception
-        return parent::render($request, $exception);
-    }
-
 }
