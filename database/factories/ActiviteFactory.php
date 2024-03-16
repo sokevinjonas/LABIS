@@ -20,8 +20,8 @@ class ActiviteFactory extends Factory
         $date_debut =  Carbon::now()->format('2024-03-15');
         $date_fin =  Carbon::now()->format('2024-03-17');
         return [
-            'titre' => $this->faker->word,
-            'description' => $this->faker->text(100),
+            'titre' => $this->faker->text(100),
+            'description' => $this->faker->text(350),
             'date_debut' => $date_debut,
             'date_fin' => $date_fin,
             'etat' => $this->faker->randomElement(['active', 'inactive']),

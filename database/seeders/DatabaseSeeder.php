@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ActiviteSeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,13 +15,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // Créer un utilisateur standard
+        User::factory()->create([
+            'nom' => 'Bienvenue Jeune Labis',
+            'email' => 'test@example.com',
+            'telephone' => 56785580,
+            'password' => Hash::make('123456'),
+            'role' => Role::User->value,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Créer un administrateur
+        User::factory()->create([
+            'nom' => 'Bienvenue Jeune Labis',
+            'email' => 'admin@example.com',
+            'telephone' => 52645634,
+            'password' => Hash::make('123456'),
+            'role' => Role::Admin->value,
+        ]);
 
+        // Appeler le seeder ActiviteSeeder
         $this->call([
             ActiviteSeeder::class
         ]);

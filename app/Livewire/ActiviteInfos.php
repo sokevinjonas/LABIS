@@ -24,7 +24,9 @@ class ActiviteInfos extends Component
                 ->when(!empty($this->search), function($query) {
                     return $query->where('titre', 'LIKE', "%{$this->search}%")
                         ->orWhere('description', 'LIKE', "%$this->search%");
-                    })->latest()->get();
+                    })
+                    ->latest('created_at')
+                    ->get();
         return view('livewire.activite-infos');
     }
 }

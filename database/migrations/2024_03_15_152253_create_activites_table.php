@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('activites', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->string('description');
+            $table->text('description');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->enum('etat', ['active', 'inactive', 'expired']);
