@@ -2,6 +2,10 @@
 <html lang="fr">
 
 <head>
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="apple-touch-icon" href="{{ asset('images/logo_labis.svg') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Labis</title>
@@ -10,6 +14,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/logo_labis.svg') }}" type="image/x-icon">
     @yield('CustomCSS')
 </head>
 
@@ -101,6 +106,23 @@
     <script src="{{ asset('plugins/sweetalert2/dist/sweetalert2.all.js') }}"></script>
     <script src="{{ asset('plugins/code/code.js') }}"></script>
     <script src="{{ asset('plugins/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register("/sw.js").then(
+                (registration) => {
+                    console.log("Service worker registration succeeded:", registration);
+                },
+                (error) => {
+                    console.error(`Service worker registration failed: ${error}`);
+                },
+            );
+        } else {
+            console.error("Service workers are not supported.");
+        }
+    </script>
     @yield('CustomJS')
 </body>
 
