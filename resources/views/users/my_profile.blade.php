@@ -20,17 +20,17 @@
         <div class="col-md-3">
 
             <!-- Profile Image -->
-            <div class="card card-primary card-outline">
+            <div class="card card-danger card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle"
-                            src="{{ $user->photo ? asset('storage/photo_profile/' . $user->photo) : asset('dist/img/user4-128x128.jpg') }}"
+                            src="{{ $user->photo ? asset('storage/photo_profile/' . $user->photo) : asset('images/user.png') }}"
                             alt="User profile picture">
                     </div>
 
                     <h3 class="profile-username text-center">{{ $user->nom }}</h3>
 
-                    <button class="submit btn btn-custom btn-block" data-toggle="modal" data-target="#ChangeUserProfile">
+                    <button class="submit btn btn-default btn-block" data-toggle="modal" data-target="#ChangeUserProfile">
                         {{ $user->photo ? 'Modifier la photo' : 'Ajouter une photo' }}
                     </button>
 
@@ -161,7 +161,7 @@
 
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-success">Sauvegarder</button>
+                                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
                                     </div>
                                 </div>
                             </form>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-success">Mettre a jour</button>
+                                        <button type="submit" class="btn btn-primary">Mettre a jour</button>
                                     </div>
                                 </div>
                             </form>

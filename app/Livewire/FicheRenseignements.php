@@ -71,7 +71,6 @@ class FicheRenseignements extends Component
             $this->startEtap = 1;
         }
     }
-
     public function validateData()
     {
         $customMessages = [

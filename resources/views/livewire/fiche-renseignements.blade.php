@@ -6,7 +6,7 @@
                 <div class="step-four">
                     @if ($startEtap == 1)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape
                                 {{ $startEtap }}/{{ $endtEtap }} - Identification</div>
                             <div class="card-body">
                                 <div class="tab-content">
@@ -47,7 +47,7 @@
                         </div>
                     @elseif ($startEtap == 2)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape
                                 {{ $startEtap }}/{{ $endtEtap }}
                                 - Contact/Adress
                             </div>
@@ -146,7 +146,7 @@
                         </div>
                     @elseif ($startEtap == 3)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape {{ $startEtap }}/
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape {{ $startEtap }}/
                                 {{ $endtEtap }}
                                 - Situation
                                 Financiere/Professionelle
@@ -180,7 +180,7 @@
                         </div>
                     @elseif ($startEtap == 4)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape {{ $startEtap }}/
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape {{ $startEtap }}/
                                 {{ $endtEtap }}
                                 - Parcours Scolaire / Professionnelle / Engagement Citoyen
                             </div>
@@ -239,7 +239,7 @@
                         </div>
                     @elseif ($startEtap == 5)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape {{ $startEtap }}/
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape {{ $startEtap }}/
                                 {{ $endtEtap }} - DIVERS
                             </div>
                             <div class="card-body">
@@ -271,7 +271,7 @@
                         </div>
                     @elseif ($startEtap == 6)
                         <div class="card">
-                            <div class="card-header bg-success fs-4 text-white text-center">Etape {{ $startEtap }}/
+                            <div class="card-header bg-danger fs-4 text-white text-center">Etape {{ $startEtap }}/
                                 {{ $endtEtap }} - Projet Professionnelle et Attente du Labis
                             </div>
                             <div class="card-body">

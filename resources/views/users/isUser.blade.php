@@ -8,8 +8,6 @@
                     laïque appelé « compétence pour demain », est un espace interactif d’innovations modernes à vision
                     éducative et sociale. En encourageant la formation par la pratique, il permet de stimuler et de
                     valoriser les initiatives portées par des jeunes. C’est un tiers-lieu d’innovation ouvert à tous.
-                    C’est aussi un espace de travail, de mixité, de créativité et de socialisation qui va étudier et
-                    proposer des solutions aux problématiques sociétales au bénéfice de la communauté.
                 </div>
             </div>
         </div>
@@ -35,12 +33,6 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-light">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="staticBackdropLabel">Marquez votre présence du jour</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="modal-body">
                     <form action="{{ route('presence') }}" method="post">
                         @csrf
@@ -59,14 +51,14 @@
                             </div>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <i class="fa fa-exclamation-triangle text-warning"></i>
+                            <i class="fa fa-exclamation-triangle text-danger"></i>
                             <p class="ml-2 mb-0">NB: Lorsque vous faites l'enregistrement, l'heure actuelle est
                                 considérée comme votre heure de départ.</p>
                         </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Enregistré</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Quitter</button>
-                    <button type="submit" class="btn btn-success">Enregistré</button>
                 </div>
                 </form>
             </div>
