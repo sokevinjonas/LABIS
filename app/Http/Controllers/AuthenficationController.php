@@ -11,16 +11,16 @@ use App\Http\Requests\PostSignRequest;
 use App\Http\Requests\PostRegisterRequest;
 
 class AuthenficationController extends Controller
-{   
-    
+{
+
     //Nb: cette fonction affiche  la vue du formulaire d'inscription
-    public function register() 
+    public function register()
     {
         return view('auth.register');
     }
 
     //Nb: cette fonction affiche  la vue du formulaire de connection
-    public function sign() 
+    public function sign()
     {
         return view('auth.sign');
     }
@@ -53,13 +53,13 @@ class AuthenficationController extends Controller
     public function PostSign(PostSignRequest $request)
     {
         $validate = $request->validated();
-        if(Auth::attempt($validate, $request->has('remember')))
+        if(Auth::attempt($validate))
         {
             $request->session()->regenerate();
-            notyf()->ripple(true)->addSuccess('Connexion reussie');
-            return redirect()->intended(route('myProfile'));
+            notyf()->ripple(true)->addSuccess('Successfully');
+            return redirect()->intended(route('dashboard'));
         } else {
-            notyf()->ripple(true)->addError('Le numero de telephone ou le mot de passe sont incorrectent.');
+            notyf()->ripple(true)->addError('Le numero de telephone ou le mot de passe est incorrect.');
             return redirect()->back();
         }
     }

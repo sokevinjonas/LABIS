@@ -14,7 +14,7 @@
                                 <i class="fas fa-user-plus"></i> Nouveau utilisateur
                             </button>
                             <div class="input-group input-group-md">
-                                <form method="get" action="">
+                                <form method="get" action="{{route('search.user')}}">
                                     <div class="input-group">
                                         <input type="text" name="search" class="form-control float-right"
                                             placeholder="Search" value="{{ request('search') }}">
@@ -86,9 +86,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="#{{-- route('admin.membres.delete.membre',$item->id) --}}" class="btn btn-danger" id="delete"><i
+                                            <a href="{{route('delete.user',$item->id)}}" class="btn btn-danger" id="delete"><i
                                                     class="far fa-trash-alt"></i></a>
                                             <!-- affiché plus de detail -->
+
+
                                             <button type="button" class="btn btn-info "
                                                 data-toggle="modal"data-target="#allModal{{ $item->id }}">
                                                 <i class="fas fa-info-circle"></i>
@@ -121,7 +123,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <div class="float-right">
-                            {{-- {{ $users->links('pagination::bootstrap-4') }} --}}
+                            {{ $users->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                 </div>

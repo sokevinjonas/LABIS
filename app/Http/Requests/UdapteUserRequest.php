@@ -27,9 +27,9 @@ class UdapteUserRequest extends FormRequest
             'nom' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'telephone' => 'required|numeric|unique:users,telephone,' . $user->id,
-            'whatsapp' => 'required|numeric|unique:users,whatsapp,' . $user->id,
+            'whatsapp' => 'nullable|numeric|unique:users,whatsapp,' . $user->id,
             'sexe' => 'required|in:M,F',
-            'profession' => 'required|string|max:255',
+            'profession' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
         ];
     }
@@ -45,13 +45,11 @@ class UdapteUserRequest extends FormRequest
             'telephone.numeric' => 'Le champ Numéro de téléphone doit être numérique.',
             'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé par un autre utilisateur.',
             'whatsapp.numeric' => 'Le champ Numéro WhatsApp doit être numérique.',
-            'whatsapp.required' => 'Le champ Numero WhatsApp est requis.',
             'whatsapp.unique' => 'Ce numéro WhatsApp est déjà utilisé par un autre utilisateur.',
             'sexe.required' => 'Le champ Sexe est requis.',
             'sexe.in' => 'Le champ Sexe doit être soit "M" pour Homme, soit "F" pour Femme.',
             'profession.string' => 'Le champ Profession doit être une chaîne de caractères.',
             'profession.max' => 'Le champ Profession ne doit pas dépasser :max caractères.',
-            'profession.required' => 'Le champ Profession est requis.',
             'bio.string' => 'Le champ Bio doit être une chaîne de caractères.',
         ];
     }

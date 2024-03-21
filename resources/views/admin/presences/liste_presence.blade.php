@@ -1,5 +1,8 @@
+
 @extends('layouts.app')
 @section('content')
+@include('admin.presences.filter_presence')
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -7,10 +10,28 @@
                     <h3 class="card-title flex-grow-1"><i class="fas fa-users fa-2x"></i> Liste des présences</h3>
 
                     <div class="card-tools d-flex align-items-center ">
-                        <a class="btn btn-link text-white mr-4 d-block" href=""><i class="fas fa-user-plus"></i> Nouvel
-                            présence</a>
+                        {{-- <a class="btn btn-link text-white mr-4 d-block" href=""><i class="fas fa-user-plus"></i> Nouvel
+                            présence</a> --}}
+
+                            {{-- <button type="button" class="btn btn-link text-white mr-4 d-block" data-toggle="modal"
+                                data-target="#bd-example-modal-lg">
+                                <i class="fas fa-user-plus"></i> Nouvelle présence
+                            </button> --}}
+
+                            @if ($presenceExistante)
+            <button type="button" class="btn btn-link text-white mr-4 d-block" data-toggle="modal"
+                                data-target="#bd-example-modal-lg">
+                                <i class="fas fa-user-plus"></i> Nouvelle présence
+                            </button>
+        @else
+            <div class="btn btn-link text-white mr-4 d-block">
+                <button type="button" disabled class="btn btn-primary">
+                    Présence Validé</button>
+            </div>
+        @endif
                         <div class="input-group input-group-md">
-                            <form method="get" action="">
+                            <form method="get" action="{{route('search.presence')}}">
+
                                 <div class="input-group">
                                     <input type="text" name="search" class="form-control float-right"
                                         placeholder="Search" value="{{ request('search') }}">
@@ -141,7 +162,7 @@
                                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class=" card-body">
-                                            {{-- @include('presences.create') --}}
+                                            @include('admin.presences.create_presence')
                                         </div>
                                     </div>
                                 </div>

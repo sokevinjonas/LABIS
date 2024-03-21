@@ -16,14 +16,28 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 </head>
+<style>
+    .register-page{
+        background-color: gray;
+
+        background-image: url('images/labis.jpg');
+        background-size: cover; /* Pour redimensionner l'image pour couvrir l'élément */
+        background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    }
+</style>
 
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="card card-outline card-danger">
             <div class="card-header text-center">
-                <img src="{{ asset('images/logo_labis.svg') }}" alt="Labis Logo" width="120px" height="110px">
-                {{-- <a href="#" class="h1"><b>LAB</b>IS</a> --}}
+                <div>
+                    <a href="#" class="h1"><b>LAB</b>IS</a>
+                </div>
+                <div>
+                    <img src="images/labis.jpeg" class="brand-image img-circle " alt="labis logo">
+                </div>
             </div>
+
             <div class="card-body">
                 @if (Session::has('success'))
                     <p class="alert alert-default text-success">{{ Session::get('success') }}</p>
@@ -31,7 +45,8 @@
                 @if (Session::has('error'))
                     <p class="alert alert-default text-danger">{{ Session::get('error') }}</p>
                 @endif
-                <p class="login-box-msg">Heureux de vous revoir 😊</p>
+                <p class="login-box-msg">Heureux de vous revoir</p>
+
                 <form action="{{ route('Postsign') }}" method="post">
                     @csrf
                     @method('POST')
@@ -44,29 +59,30 @@
                         </div>
                     </div>
                     @error('telephone')
-                        <span class="text-danger">{{ $message }}</span>
+                        <span class="text text-danger">{{ $message }}</span>
                     @enderror
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+                        <input type="password" name="password" class="form-control" placeholder="Mot de passe ">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-eye"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
                     @error('password')
-                        <span class="text-danger">{{ $message }}</span>
+                        <span class="text text-danger">{{ $message }}</span>
                     @enderror
                     <div class="row">
                         <!-- /.col -->
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block">Me connecter</button>
+                            <button type="submit" class="btn btn-danger btn-block">Me connecter</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
+
             </div>
-            <a href="{{ route('register') }}" class="text-center text-danger mb-2">JE NE SUIS PAS MEMBRE DU LABIS</a>
+            <a href="{{ route('register') }}" class="text-center mb-2">Je ne suis pas un membre</a>
             <!-- /.form-box -->
         </div><!-- /.card -->
     </div>

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Activite extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'titre',
+        'description',
+        'date_debut',
+        'date_fin',
+        'etat',
+        'image'
+    ];
 }

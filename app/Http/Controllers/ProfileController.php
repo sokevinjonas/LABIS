@@ -9,22 +9,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UdapteUserRequest;
 use App\Http\Requests\PhotoUpdateRequest;
-use App\Utils\ProfileCompletenessChecker;
 
 class ProfileController extends Controller
-{   
+{
     //Nb: cette fonction permet de afficher la vue pour My profile
     public function AffichageProfile()
-    {   
+    {
         $user = Auth::user();
         $Countpresence = Presence::where('user_id', $user->id)->count();
-        $notComplet = ProfileCompletenessChecker::isProfileComplete($user);
-        // dd($notComplet);
         // dd($Countpresence);
         return view('users.my_profile', [
             'user' => $user,
-            'Countpresence' => $Countpresence,
-            'notComplet' => $notComplet
+            'Countpresence' => $Countpresence
         ]);
     }
     //Nb: cette fonction permet de mettre a jour les infos du profile
@@ -45,13 +41,9 @@ class ProfileController extends Controller
         $user->bio  = $validate['bio'];
 
         $user->save();
-        // Vérifiez si le profil est complet après la mise à jour
-        if (!ProfileCompletenessChecker::isProfileComplete($user)) {
-            return redirect()->back();
-        }
         notyf()->ripple(true)->addSuccess('Votre profile a été mise à jour avec succès.');
             return redirect()->back();
-            
+
         } catch (Exception $th) {
             // dd($th->getMessage());
             notyf()->ripple(true)->addError('Une erreur s\'est produite lors de la mise à jour.');
@@ -61,7 +53,7 @@ class ProfileController extends Controller
 
      //Nb: cette fonction permet de mettre a jour ou ajouter une nouvelle photo
     public function UpdatePhoto(PhotoUpdateRequest $request)
-    {   
+    {
         try {
             $validated = $request->validated();
 
@@ -70,22 +62,18 @@ class ProfileController extends Controller
 
             if ($request->hasFile('photo')) {
                 $image = $request->file('photo');
-                
+
                 // Générez un nom unique pour l'image en utilisant le timestamp
                 $imageName = time().'.'.$image->getClientOriginalExtension();
-                
+
                 // Stockez l'image dans le dossier 'photo_profile' du stockage public
                 $image->storeAs('photo_profile', $imageName, 'public');
 
                 // Enregistrez le nom du fichier dans la base de données
                 $user->photo = $imageName;
-                $user->save(); 
-                // Vérifiez si le profil est complet après la mise à jour
-                if (!ProfileCompletenessChecker::isProfileComplete($user)) {
-                    return redirect()->back();
-                }
-                notyf()->ripple(true)->addSuccess('Photo mise à jour avec succès.');
+                $user->save();
             }
+            notyf()->ripple(true)->addSuccess('Photo mise à jour avec succès.');
 
             return redirect()->back();
         } catch (Exception $th) {
@@ -99,15 +87,13 @@ class ProfileController extends Controller
     public function Logout()
     {
         Auth::logout();
-    
+
         return redirect()->route('sign');
     }
 
-    public function fiche_renseigement(){
-        return view('users.fiche_renseignements');
-    }
 
-    public function termes(){
-        return view('auth.termes_et_conditions');
+        public function changePassword(){
+
+        return view('users.change_password');
     }
 }

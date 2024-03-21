@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PresenceController;
-use App\Http\Controllers\Infos\InfoController;
 use App\Http\Controllers\AuthenficationController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\LogoutUserController;
 use App\Http\Controllers\Presence\ListePresencController;
+use App\Http\Controllers\Activites\ActiviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,8 @@ use App\Http\Controllers\Presence\ListePresencController;
 |
 */
 //lorsque je ne suis pas connecter voici les pages dont j'ai access
-Route::group(['middleware' => 'guest'], function () 
-{       
+Route::group(['middleware' => 'guest'], function ()
+{
         //cette routes retourne la vue du formulaire d'inscription
     Route::get('form-register', [AuthenficationController::class, 'register'])
             ->name('register');
@@ -35,13 +35,11 @@ Route::group(['middleware' => 'guest'], function ()
         //cette routes traite la vue du formulaire de connexion
     Route::post('post-form-sign', [AuthenficationController::class, 'PostSign'])
             ->name('Postsign');
-    Route::get('nos-termes-et-conditions', [ProfileController::class, 'termes'])->name('termes');
-    
 });
 
-//lorsque je suis connecter 
-Route::group(['middleware' => 'auth' ], function ()  
-{       
+//lorsque je suis connecter
+Route::group(['middleware' => 'auth'], function ()
+{
         //cette routes retourne la vue du la page acceuil dashboard
     Route::get('/', [AdminController::class, 'dashboard'])
             ->name('dashboard');
@@ -66,14 +64,39 @@ Route::group(['middleware' => 'auth' ], function ()
         //cette route permet de mettre a jour les infos du profiles (nom, sexe, prof, bio, email, tel, whatsapp)
     Route::post('update-profile' , [ProfileController::class, 'UpdateUserProfile'])
             ->name('post_user_profile');
-        //cette route permet de mettre a jour la photo du profile 
+        //cette route permet de mettre a jour la photo du profile
     Route::post('update-photo' , [ProfileController::class, 'UpdatePhoto'])
             ->name('update_user_photo');
         //cette route permet de deconnecter un utilisateurs(admin ou pas admin)
     Route::get('logout-user', [ProfileController::class, 'Logout'])
             ->name('logoutUser');
-    Route::get('fiche_renseigement', [ProfileController::class, 'fiche_renseigement'])
-            ->name('fiche_renseigement')->middleware('completeProfile');
-    Route::get('infos-formations', [InfoController::class, 'index'])->name('infos.index');
-    
+
+    Route::get('change-password', [ProfileController::class, 'changePassword'])
+            ->name('changePassword');
+
+    Route::get('/cherche/presence', [AdminController::class, 'SearchPresence'])->name('search.presence');
+    Route::get('/filter/presence', [AdminController::class, 'FilterPresence'])->name('filter.presence');
+
+    Route::get('/cherche/user', [AdminController::class, 'SearchUser'])->name('search.user');
+    Route::get('/filter/user', [AdminController::class, 'FilterUser'])->name('filter.user');
+
+    Route::get('/delete/{id}', [AdminController::class, 'DeleteUser'])->name('delete.user');
+
+    // activité créé par ardmin
+    Route::get('liste/activites', [ActiviteController::class, 'activiteListe'])->name('liste_activite');
+    Route::get('create/activite', [ActiviteController::class, 'activiteCreate'])->name('create_activite');
+
+    Route::get('publier/activite/{id}', [ActiviteController::class, 'publierActivite'])->name('publier_activite');
+    Route::get('retirer/activite/{id}', [ActiviteController::class, 'retirerActivite'])->name('retirer_activite');
+
+    Route::post('store/activite', [ActiviteController::class, 'storeActivite'])->name('store_activite');
+
+
+
+
+
+
+
 });
+
+
