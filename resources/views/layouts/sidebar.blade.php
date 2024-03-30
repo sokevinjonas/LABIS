@@ -52,64 +52,59 @@
                 </li>
                 <li class="nav-item {{ setMenuClass('listeUser', 'menu-open') }}">
                     <a href="#" class="nav-link {{ setMenuClass('listeUser', 'active') }}">
-                      <i class=" nav-icon fas fa-user-shield"></i>
-                      <p>
-                        Utilisateurs
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
+                        <i class=" nav-icon fas fa-user-shield"></i>
+                        <p>
+                            Utilisateurs
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
-                      <li class="nav-item ">
-                        <a href="{{route('listeUser')}}"
-                        class="nav-link {{ setMenuActive('listeUser') }}"
-                        >
-                          <i class=" nav-icon fas fa-users-cog"></i>
-                          <p> Liste utilisateurs</p>
-                        </a>
-                      </li>
+                        <li class="nav-item ">
+                            <a href="{{ route('listeUser') }}" class="nav-link {{ setMenuActive('listeUser') }}">
+                                <i class=" nav-icon fas fa-users-cog"></i>
+                                <p> Liste utilisateurs</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="nav-item {{ setMenuClass('listePresenceAdmin', 'menu-open') }}">
                     <a href="#" class="nav-link {{ setMenuClass('listePresenceAdmin', 'active') }}">
-                      <i class=" nav-icon fas fa-user-shield"></i>
-                      <p>
-                        Présences
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
+                        <i class=" nav-icon fas fa-user-shield"></i>
+                        <p>
+                            Présences
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
-                      <li class="nav-item ">
-                        <a href="{{route('listePresenceAdmin')}}"
-                        class="nav-link {{ setMenuActive('listePresenceAdmin') }}"
-                        >
-                          <i class=" nav-icon fas fa-users-cog"></i>
-                          <p> Liste présences</p>
-                        </a>
-                      </li>
+                        <li class="nav-item ">
+                            <a href="{{ route('listePresenceAdmin') }}"
+                                class="nav-link {{ setMenuActive('listePresenceAdmin') }}">
+                                <i class=" nav-icon fas fa-users-cog"></i>
+                                <p> Liste présences</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="nav-item {{ setMenuClass('liste_activite', 'menu-open') }}">
                     <a href="#" class="nav-link {{ setMenuClass('liste_activite', 'active') }}">
-                      <i class=" nav-icon fas fa-user-shield"></i>
-                      <p>
-                        Activitées
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
+                        <i class=" nav-icon fas fa-user-shield"></i>
+                        <p>
+                            Activitées
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
-                      <li class="nav-item ">
-                        <a href="{{route('liste_activite')}}"
-                        class="nav-link {{ setMenuActive('liste_activite') }}"
-                        >
-                          <i class=" nav-icon fas fa-users-cog"></i>
-                          <p> Liste activitées</p>
-                        </a>
-                      </li>
+                        <li class="nav-item ">
+                            <a href="{{ route('liste_activite') }}"
+                                class="nav-link {{ setMenuActive('liste_activite') }}">
+                                <i class=" nav-icon fas fa-users-cog"></i>
+                                <p> Liste activitées</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-
             @elseif (Auth::user()->isUser())
                 <li class="nav-item">
                     <a href="{{ route('mespresences') }}" class="nav-link {{ setMenuActive('mespresences') }}">
